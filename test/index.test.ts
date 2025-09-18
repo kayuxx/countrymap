@@ -1,8 +1,6 @@
 import { expect, test } from "vitest";
 import data from "../src/data.json";
-import countrymap from "../src";
-
-const cm = countrymap();
+import cm from "../src";
 
 test("should return Europe countries if Europe passed in continents on lookup function ", () => {
   const europeCountries = data.filter((e) => e.continent == "Europe");
@@ -146,5 +144,5 @@ test("should have Country type properties", () => {
 });
 
 test("should return all countires on all function", () => {
-  expect(cm.all()).to.have.length(250);
+  expect(cm.getAllCountries()).to.have.length(250);
 });

@@ -1,8 +1,7 @@
 import data from "./data.json" with { type: "json" };
 import type { Country } from "types.ts";
-export type * from "types.ts";
-const dataset = data as Country[];
 
+const dataset = data as Country[];
 type AnyProp = {
   [x: string]: any;
 };
@@ -58,7 +57,7 @@ type CountryMapFunction = () => {
     field: K,
     value: findByProps[K],
   ) => Country | undefined;
-  all: () => Country[];
+  getAllCountries: () => Country[];
 };
 
 function mergeFields(
@@ -101,6 +100,7 @@ const countrymap: CountryMapFunction = () => {
         );
       }
     }
+
     for (const locale of country.locale.locales) {
       countriesBy["locales"][locale] = mergeFields(
         countriesBy,
@@ -109,6 +109,7 @@ const countrymap: CountryMapFunction = () => {
         country,
       );
     }
+
     for (const lang of country.languages.spokenLanguages) {
       if (lang.name) {
         countriesBy["languages"][lang.name] = mergeFields(
@@ -155,16 +156,19 @@ const countrymap: CountryMapFunction = () => {
       }
       return results ? [...results] : [];
     },
+
     findBy(key, value) {
       if (!Object.keys(countryBy).includes(key)) {
         throw new Error("Invalid query: expected a valid query key");
       }
       return countryBy[key][value];
     },
-    all() {
+
+    getAllCountries() {
       return dataset;
     },
   };
 };
 
-export default countrymap;
+export default countrymap();
+export type * from "types.ts";
