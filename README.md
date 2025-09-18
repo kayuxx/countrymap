@@ -41,7 +41,8 @@ npm install countrymap
 ## 🕹️ Usage
 
 ```ts
-import countrymap from "countrymap";
+import cm from "countrymap";
+
 // types
 import type {
   Alpha2,
@@ -55,7 +56,7 @@ import type {
   Region,
 } from "countrymap";
 
-const cm = countrymap();
+const { lookup, findBy, getAllCountries } = cm;
 ```
 
 #### `lookup`
@@ -95,7 +96,7 @@ cm.findBy("numeric", "124");
 List all countries
 
 ```ts
-cm.all();
+cm.getAllCountries();
 ```
 
 ## 📚 Resources
