@@ -5,7 +5,8 @@
   "keywords": [
     "countries",
     "country",
-    "world"
+    "world",
+    "iso"
   ],
   "license": "MIT",
   "author": "Zoheir Benghalem <kayuxx@tutanota.com>",
